@@ -6,12 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href = "styles.css">
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
+    <script src = "index.js"></script>
     <title>My Practice Website</title>
 </head>
 <body>
     <div class="container">
-        <h3 id=box1Title style = "text-align: center; vertical-align: middle; display: flex">Hello There</h1>>
+        <!-- <h3 id=box1Title style = "text-align: center; vertical-align: middle; display: flex">Hello There</h3> -->
+        <canvas id = "myChart" width = '400' height = '400'></canvas>
     </div>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        //Chart.defaults.global.defaultFontFamily = 'Lato';
+        //Chart.defaults.global.defaultFontSize = 18;
+        //Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', 
+            data: {
+                labels:['Boston', "Worcester", 'Springfield', 'Cambridge', 'New Bedford'],
+                datasets:[{
+                    label: 'Population',
+                    data:[
+                        695,506,
+                        185,174,
+                        152,160,
+                        120,479,
+                        95,347
+                    ],
+                    backgroundColor: 'blue',
+                    borderWidth:1,
+                    borderColor: '#777',
+                    hoverBorderWidth:3,
+                    hoverBorderColor: '#000'
+                }],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Largest Cities in Massachusetts'
+                }
+            }
+        })
+    </script>
     
 </body>
 </html>
