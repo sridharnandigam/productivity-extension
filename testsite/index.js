@@ -15,9 +15,39 @@ var totalHours = 3;
 var totalMinutes = 30;
 
 //Timer code
+class Timer{
+    constructor(hours, seconds){
+        this.hours = hours;
+        this.seconds = seconds;
+    }
+}
 
+function timer(){
+	var hour = 0;
+    var min = 1;
+    var sec = 15;
+    var totalSec = (hour* 3600) + (min * 60) + sec;
+    
+    var timer = setInterval(function(){
+        if(totalSec < 0){
+                clearInterval(timer);
+        }
+        else{
+            console.log(min + ":" + sec);
+            totalSec--;
+        min = Math.floor(totalSec/60);
+        sec = totalSec % 60;
+        }
+  }, 1000)
+}
 
-//Create donught chart
+/*
+class TimeChart{
+    constructor()
+}
+*/
+
+//Create doughnut chart
 var ctx = document.getElementById("myDonut");
 var myChart = new Chart(ctx, {
     type: 'doughnut',
