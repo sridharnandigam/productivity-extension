@@ -1,4 +1,6 @@
 //Time stuff
+import { Task } from "./task";
+
 const dailyHours = 24;
 
 var currDate = new Date();
@@ -16,8 +18,9 @@ var totalMinutes = 30;
 
 //Timer code
 class Timer{
-    constructor(hours, seconds){
+    constructor(hours, minutes, seconds){
         this.hours = hours;
+        this.minuts = minutes;
         this.seconds = seconds;
     }
 }
@@ -26,16 +29,17 @@ function timer(){
 	var hour = 0;
     var min = 1;
     var sec = 15;
-    var totalSec = (hour* 3600) + (min * 60) + sec;
+    var totalSec = (hour * 3600) + (min * 60) + sec;
     
     var timer = setInterval(function(){
         if(totalSec < 0){
                 clearInterval(timer);
         }
         else{
-            console.log(min + ":" + sec);
+            console.log(hour + ":" + min + ":" + sec);
             totalSec--;
         min = Math.floor(totalSec/60);
+        hour = Math.floor(totalSec/3600);
         sec = totalSec % 60;
         }
   }, 1000)
